@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   // NAV RESIZE BURGER MENU
-  const burgerMenu = document.getElementById('burger-menu');
-  const navLinks = document.getElementById('nav-links');
-
-  burgerMenu.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
+  document.getElementById('burger-icon').addEventListener('click', function () {
+    this.classList.toggle('open');
+    document.getElementById('nav-menu').classList.toggle('open');
   });
 
   // DARK & LIGHT THEME TOGGLE

@@ -58,7 +58,7 @@ header {
     text-decoration: underline;
     text-decoration-color: var(--link-color);
   }
-  nav > div {
+  nav > div.nav-menu {
     display: flex;
     gap: 1.25rem;
   }
@@ -145,62 +145,76 @@ footer {
   bottom: 0;
 }
 
-/* TODO
-change vertical scrollbar styles
-reduce icon size
-768px width*/
-/* Burger Menu Styles */
-.burger-menu {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.burger-icon {
-  width: 1.5rem;
-  height: 0.175rem;
-  background-color: var(--text-color);
-  margin: 3px 0;
-}
-
-/* Media Query for Mobile Devices */
 @media (max-width: 768px) {
+  header {
+    #nav-menu {
+      gap: 0;
+    }
+  }
+
   #content {
     img#me {
       width: 7rem;
       border-radius: 50%;
       margin-bottom: 1rem;
     }
-
     #name {
       font-size: 2rem;
     }
   }
-
-  .nav-links {
-    display: none;
+  .burger-icon {
+    display: flex; /* Show burger icon */
+    width: 30px;
+    height: 24px;
     flex-direction: column;
-    margin: auto;
-    width: 95%;
-    border-top: 1px solid var(--burger-menu-border-color);
-    border-bottom: 1px solid var(--burger-menu-border-color);
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .burger-icon .line {
+    width: 100%;
+    height: 4px;
+    background-color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: -100%; /* Start the menu above the viewport */
+    left: 0;
+    width: 100%; /* Full width */
+    height: auto; /* Adjust height as needed */
     background-color: var(--background-color);
-    position: absolute;
-    top: 3.5rem; /* Adjust according to header height */
-    left: 2.5%;
-    z-index: 1000;
+    border-top: 2px solid var(--burger-menu-border-color);
+    border-bottom: 2px solid var(--burger-menu-border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+    z-index: 999; /* Ensure the menu is on top */
   }
 
-  .nav-links a {
-    padding: 15px;
+  .nav-menu a {
     text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
   }
 
-  .burger-menu {
-    display: flex;
+  .nav-menu.open {
+    top: 4rem; /* Slide the menu down */
   }
 
-  .nav-links.active {
-    display: flex;
+  .burger-icon.open .line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  .burger-icon.open .line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .burger-icon.open .line:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
   }
 }
