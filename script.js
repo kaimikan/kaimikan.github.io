@@ -1,5 +1,13 @@
-// JavaScript for theme toggle
 document.addEventListener('DOMContentLoaded', () => {
+  // NAV RESIZE BURGER MENU
+  const burgerMenu = document.getElementById('burger-menu');
+  const navLinks = document.getElementById('nav-links');
+
+  burgerMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // DARK & LIGHT THEME TOGGLE
   const prefersDarkScheme = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches;

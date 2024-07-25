@@ -5,6 +5,7 @@
   --link-color: #42a5f5;
   --button-hover-background-color: #4e4e4e;
   --button-background-color: #424242;
+  --burger-menu-border-color: #5d5d5d;
   --theme-icon-color: #bcbcbc;
   --theme-icon-flip-degrees: 180deg;
 }
@@ -16,6 +17,7 @@
   --link-color: #1565c0;
   --button-hover-background-color: #e0e0e0;
   --button-background-color: #dadada;
+  --burger-menu-border-color: #5d5d5d;
   --theme-icon-color: #5d5d5d;
   --theme-icon-flip-degrees: 0deg;
 }
@@ -27,13 +29,23 @@ body {
   font-weight: normal;
   background-color: var(--background-color);
   color: var(--text-color);
+  transition: all 0.25s ease-in;
 }
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: 1rem;
+  width: 100%;
+
+  #header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    width: 100%;
+    max-width: 60rem;
+  }
 
   #title {
     font-size: 1.5rem;
@@ -46,7 +58,7 @@ header {
     text-decoration: underline;
     text-decoration-color: var(--link-color);
   }
-  nav {
+  nav > div {
     display: flex;
     gap: 1.25rem;
   }
@@ -131,4 +143,64 @@ footer {
   font-weight: 300;
   width: 100%;
   bottom: 0;
+}
+
+/* TODO
+change vertical scrollbar styles
+reduce icon size
+768px width*/
+/* Burger Menu Styles */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.burger-icon {
+  width: 1.5rem;
+  height: 0.175rem;
+  background-color: var(--text-color);
+  margin: 3px 0;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+  #content {
+    img#me {
+      width: 7rem;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    #name {
+      font-size: 2rem;
+    }
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    margin: auto;
+    width: 95%;
+    border-top: 1px solid var(--burger-menu-border-color);
+    border-bottom: 1px solid var(--burger-menu-border-color);
+    background-color: var(--background-color);
+    position: absolute;
+    top: 3.5rem; /* Adjust according to header height */
+    left: 2.5%;
+    z-index: 1000;
+  }
+
+  .nav-links a {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .burger-menu {
+    display: flex;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
 }
