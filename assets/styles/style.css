@@ -3,6 +3,7 @@
   --background-color: #212121;
   --text-color: #dadada;
   --link-color: #42a5f5;
+  --link-second-color: #3685c5;
   --button-hover-background-color: #4e4e4e;
   --button-background-color: #424242;
   --burger-menu-border-color: #5d5d5d;
@@ -20,6 +21,7 @@
   --background-color: #fafafa;
   --text-color: #000000;
   --link-color: #1565c0;
+  --link-second-color: #115199;
   --button-hover-background-color: #e0e0e0;
   --button-background-color: #dadada;
   --burger-menu-border-color: #5d5d5d;
@@ -83,6 +85,7 @@ header {
   font-weight: 300;
   gap: 1rem;
   margin-top: 2rem;
+  text-align: center;
 
   img#me {
     width: 12.5rem;
@@ -153,12 +156,12 @@ header {
   width: 100%;
   height: 100%;
   margin-top: 2rem;
-  margin-right: 1rem;
-  margin-left: 1rem;
 
   #section-container {
     width: 100%;
     max-width: 60rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -204,6 +207,54 @@ header {
   }
 }
 
+#contact-title {
+  font-size: var(--huge-font-size);
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+.btn {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  background: var(--link-color);
+  background-image: -webkit-linear-gradient(
+    top,
+    var(--link-color),
+    var(--link-second-color)
+  );
+  background-image: -moz-linear-gradient(
+    top,
+    var(--link-color),
+    var(--link-second-color)
+  );
+  background-image: -ms-linear-gradient(
+    top,
+    var(--link-color),
+    var(--link-second-color)
+  );
+  background-image: -o-linear-gradient(
+    top,
+    var(--link-color),
+    var(--link-second-color)
+  );
+  background-image: linear-gradient(
+    top,
+    var(--link-color),
+    var(--link-secondary-color)
+  );
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+  color: var(--background-color);
+  width: 20%;
+  text-align: center;
+  font-size: var(--small-font-size);
+  font-weight: normal;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
 footer {
   display: block;
   width: 100%;
@@ -231,6 +282,10 @@ footer {
     #name {
       font-size: var(--big-font-size);
     }
+  }
+
+  #contact-title {
+    font-size: var(--big-font-size);
   }
 
   .subsection-title {
