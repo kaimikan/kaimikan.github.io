@@ -157,6 +157,18 @@ header {
   height: 100%;
   margin-top: 2rem;
 
+  h2 {
+    font-weight: 300;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
   #section-container {
     width: 100%;
     max-width: 60rem;
