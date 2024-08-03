@@ -147,6 +147,12 @@ header {
   }
 }
 
+br {
+  display: block;
+  margin-top: 2rem;
+  content: ' ';
+}
+
 #section-wrapper {
   flex: 1;
   display: flex;
@@ -169,6 +175,16 @@ header {
     list-style: none;
   }
 
+  a.inline-link {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: all 0.8s ease-in;
+  }
+
+  a.inline-link:hover {
+    text-decoration: underline;
+  }
+
   #section-container {
     width: 100%;
     max-width: 60rem;
@@ -182,6 +198,14 @@ header {
     text-align: justify;
     text-justify: auto;
     hyphens: auto;
+  }
+
+  #section-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: top;
+    gap: 0.5rem;
   }
 
   #section-text {
