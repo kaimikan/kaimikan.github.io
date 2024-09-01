@@ -50,4 +50,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
   adjustPaddingForScrollbar();
   window.addEventListener('resize', adjustPaddingForScrollbar);
+
+  // SMOOTH PAGE TRANSITIONS
+  const enableTransitions = false;
+  // Select the elements you want to apply the transitions to
+  const elements = ['#content', '#section-wrapper'];
+
+  // Apply the transition effect only when clicking on links
+  const links = document.querySelectorAll('a');
+
+  if (enableTransitions)
+    links.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        if (!link.classList.contains('current-page')) {
+          // Get the target attribute of the link (e.g., _blank, _self)
+          const target = link.getAttribute('target');
+
+          // If the target is _blank or similar, do not apply the fade-out effect
+          if (
+            target === '_blank' ||
+            target === '_parent' ||
+            target === '_top'
+          ) {
+            return; // Exit early to open the link normally without effects
+          }
+
+          // Prevent default navigation to apply the transition first
+          e.preventDefault();
+
+          // If instead of specific sections we want to apply the face-out effect for the whole body
+          // document.body.classList.add('fade-exit-active');
+          // setTimeout(() => {
+          //   window.location = link.href;
+          // }, 500); // Match this with your CSS transition duration
+
+          // Find the elements with the specific IDs and apply the fade-out effect
+          elements.forEach((selector) => {
+            const element = document.querySelector(selector);
+            if (element) {
+              element.classList.add('fade-exit-active');
+            }
+          });
+
+          // Navigate to the new URL after the fade-out animation
+          setTimeout(() => {
+            // Handle navigation depending on the link target
+            if (!target || target === '_self') {
+              // Regular navigation
+              window.location.href = link.href;
+            } else {
+              // Open in the specified target
+              window.open(link.href, target);
+            }
+          }, 500); // This timing matches the CSS transition duration
+        }
+      });
+    });
 });
