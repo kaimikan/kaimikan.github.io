@@ -22,7 +22,7 @@ function createDynamicContent(params) {
 
   // Main image
   const mainImage = document.createElement('img');
-  mainImage.src = `assets/images/items/item_${params['item-number']}/img.png`; // Image path based on item number
+  mainImage.src = `assets/images/gallery/${params['item-number']}/main-img.png`; // Image path based on item number
   mainImage.alt = params['item-number'];
   mainImage.id = 'main-image';
   imageContainer.appendChild(mainImage);
@@ -31,23 +31,29 @@ function createDynamicContent(params) {
   const extraImagesContainer = document.createElement('div');
   extraImagesContainer.className = 'extra-images-container';
 
-  // Add extra images based on total-subitems
-  const totalSubitems = parseInt(params['total-subitems'], 10) || 0;
-  for (let i = 1; i <= totalSubitems; i++) {
-    const singleExtraImageContainer = document.createElement('div');
-    singleExtraImageContainer.className = 'single-extra-image-container';
-
-    const extraItemImage = document.createElement('img');
-    extraItemImage.className = 'extra-item';
-    extraItemImage.src = `assets/images/items/item_${params['item-number']}/subitem${i}.png`;
-    extraItemImage.alt = `${params['item-number']}${i}`;
-    singleExtraImageContainer.appendChild(extraItemImage);
-    extraImagesContainer.appendChild(singleExtraImageContainer);
-  }
-
   // Create the text container
   const textContainer = document.createElement('div');
   textContainer.className = 'text-container';
+
+  // Add extra images based on total-subitems
+  const totalSubitems = parseInt(params['total-subitems'], 10) || 0;
+  if (totalSubitems > 0) {
+    textContainer.className = textContainer.className + ' non-solo-main-img';
+
+    for (let i = 1; i <= totalSubitems; i++) {
+      const singleExtraImageContainer = document.createElement('div');
+      singleExtraImageContainer.className = 'single-extra-image-container';
+
+      const extraItemImage = document.createElement('img');
+      extraItemImage.className = 'extra-item';
+      extraItemImage.src = `assets/images/gallery/${params['item-number']}/sub-img-${i}.png`;
+      extraItemImage.alt = `${params['item-number']}${i}`;
+      singleExtraImageContainer.appendChild(extraItemImage);
+      extraImagesContainer.appendChild(singleExtraImageContainer);
+    }
+  } else {
+    textContainer.className = textContainer.className + ' solo-main-img';
+  }
 
   // Fill in data from query parameters
   const nameElement = document.createElement('h2');
