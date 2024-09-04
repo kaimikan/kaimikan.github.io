@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery</title>
+    <link rel="icon" href="assets/images/thumbnail.png" type="image/png" />
+    <link rel="preload" href="assets/styles/critical-styles.css" as="style" />
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/gallery.css" />
+    <script src="script.js" defer></script>
+    <script src="assets/scripts/small-view-script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div id="header-container">
+        <span id="title">
+          <a href="casual.html">Kai</a>
+        </span>
+        <nav class="burger-menu">
+          <div class="burger-icon" id="burger-icon">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+          <div class="nav-menu" id="nav-menu">
+            <a href="#" class="current-page">Gallery</a>
+            <a href="#">WIP</a>
+            <a href="#">WIP</a>
+            <a href="#">WIP</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="gallery-content">
+      <div class="small-view">
+        <div
+          class="square-container"
+          item-id="1"
+          subitem-amount="2"
+          name="Name 1"
+          date="1st September 2024"
+        >
+          <div class="image-container">
+            <img
+              src="assets/images/items/item_1/img.png"
+              alt="alt-img-name-1"
+            />
+            <div class="text-overlay">
+              <h2 class="name">Name 1</h2>
+              <p class="refence"><b>Date: </b> 1st September 2024</p>
+              <h3 class="cost"></h3>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="square-container"
+          item-id="2"
+          subitem-amount="4"
+          name="Name 2"
+          date="3rd September 2024"
+        >
+          <div class="image-container">
+            <img
+              src="assets/images/items/item_2/img.png"
+              alt="alt-img-name-2"
+            />
+            <div class="text-overlay">
+              <h2 class="name">Name 2</h2>
+              <p class="refence"><b>Date: </b> 3rd September 2024</p>
+              <h3 class="cost"></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button id="theme-toggle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm2 0c0-5.514 4.486-10 10-10v20c-5.514 0-10-4.486-10-10z"
+        />
+      </svg>
+    </button>
+
+    <footer>
+      <p>&copy; 2024 &middot; kaimikan</p>
+    </footer>
+  </body>
+</html>

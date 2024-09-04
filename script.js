@@ -23,34 +23,39 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // FORMAL & INFORMAL SETTING TOGGLE
-  const formalSVG = document.getElementById('formal');
-  const informalSVG = document.getElementById('informal');
+  const formalSVG = document.getElementById('formal') || undefined;
+  const informalSVG = document.getElementById('informal') || undefined;
   let currentUrl = window.location.href.split('/');
   currentUrl.pop();
   let newUrl = currentUrl.join('/');
 
   const settingToggleButton = document.getElementById('formal-informal-toggle');
 
-  const currentSetting = localStorage.getItem('setting') || 'formal';
-  document.documentElement.setAttribute('setting', currentSetting);
+  if (settingToggleButton) {
+    const currentSetting =
+      formalSVG.getAttribute('initially-hidden') === 'true'
+        ? 'formal'
+        : 'informal';
+    document.documentElement.setAttribute('setting', currentSetting);
 
-  settingToggleButton.addEventListener('click', () => {
-    const newSetting =
-      document.documentElement.getAttribute('setting') === 'formal'
-        ? 'informal'
-        : 'formal';
+    settingToggleButton.addEventListener('click', () => {
+      const newSetting =
+        document.documentElement.getAttribute('setting') === 'formal'
+          ? 'informal'
+          : 'formal';
 
-    document.documentElement.setAttribute('setting', newSetting);
-    // allow updating the link dynamically with the theme button
-    updateSetting(
-      newSetting,
-      formalSVG,
-      informalSVG,
-      newUrl,
-      (isSwitchingPage = true)
-    );
-    localStorage.setItem('setting', newSetting);
-  });
+      document.documentElement.setAttribute('setting', newSetting);
+      // allow updating the link dynamically with the theme button
+      updateSetting(
+        newSetting,
+        formalSVG,
+        informalSVG,
+        newUrl,
+        (isSwitchingPage = true)
+      );
+      // localStorage.setItem('setting', newSetting);
+    });
+  }
 
   function updateSetting(
     setting,
@@ -62,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (setting === 'formal') {
       informalSVG.style.display = 'none';
       formalSVG.style.display = 'block';
-      baseUrl += '/casual.html';
+      baseUrl += '/index.html';
     } else {
       informalSVG.style.display = 'block';
       formalSVG.style.display = 'none';
-      baseUrl += '/index.html';
+      baseUrl += '/casual.html';
     }
 
     if (isSwitchingPage) {

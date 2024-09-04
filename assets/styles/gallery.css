@@ -1,0 +1,236 @@
+.gallery-content {
+  margin-left: 2rem;
+  margin-right: 2rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* the flex 1 might be causing some top spacing issues, need to figure out */
+  flex: 1;
+  font-weight: var(--light-font-weight);
+  gap: 1rem;
+  text-align: center;
+}
+
+.small-view {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr));
+  width: 60vw;
+
+  .square-container {
+    max-width: 30vw;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: #111111;
+    border: 3px solid #525252;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .image-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-container img {
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    height: auto;
+    width: 100%;
+    transition: opacity 0.5s ease; /* Smooth transition for dimming effect */
+  }
+
+  .text-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    text-align: center;
+    color: white; /* Adjust as needed for better contrast */
+    /* background: rgba(
+      0,
+      0,
+      0,
+      0.5
+    );  */
+    /* Optional: adds background behind text for better readability */
+    padding: 10px; /* Optional: adjust padding as needed */
+    display: none; /* Initially hidden */
+  }
+
+  .image-container:hover img {
+    opacity: 0.25; /* Dims the image to 25% opacity on hover */
+  }
+
+  .image-container:hover .text-overlay {
+    display: flex; /* Show on hover */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.big-view {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns with equal width */
+  grid-template-rows: 56vh; /* Rows adjust to content height */
+  width: 60vw;
+  gap: 1rem;
+
+  .image-container {
+    grid-column: 1; /* First column */
+    grid-row: 1; /* Second row */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #525252;
+    text-align: center;
+  }
+
+  .image-container img {
+    /* max-width: 30vw; */
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background-color: #111111;
+    height: auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  #main-image-container {
+    overflow: hidden;
+    cursor: crosshair; /* Changes cursor to crosshair on hover */
+  }
+
+  #main-image {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    /* cursor: zoom-in; */
+    transition: transform 0.3s ease;
+    transform-origin: center center; /* Default transform origin */
+  }
+
+  #main-image-container:hover #main-image {
+    transform: scale(2); /* Adjust scale for desired zoom level */
+  }
+
+  .extra-item:hover {
+    cursor: pointer;
+  }
+
+  .extra-images-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    grid-column: 1; /* First column */
+    grid-row: 2; /* Second row */
+    text-align: center;
+    gap: 0.25rem;
+  }
+
+  .single-extra-image-container {
+    max-width: 9.3vw;
+    max-height: 9.3vw;
+    width: 100%;
+    height: 100%;
+    background-color: #111111;
+    border: 3px solid #525252;
+    text-align: center;
+  }
+
+  .single-extra-image-container img {
+    max-width: 9.3vw;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    height: auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .text-container {
+    grid-column: 2; /* Second column */
+    grid-row: 1 / span 2; /* Spans two rows */
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding-left: 0.5rem;
+    align-items: flex-start;
+    border: 3px solid #525252;
+  }
+
+  .admin-antique-forms {
+    grid-column: 1 / span 2; /* Second column */
+    grid-row: 3; /* Spans two rows */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* Button styles */
+    form {
+      width: 100%;
+      margin: 1rem;
+    }
+    input[type='submit'] {
+      width: 100%; /* Full width button */
+      padding: 10px; /* Padding inside the button */
+      margin-top: 1rem;
+      border: none; /* Remove default border */
+      border-radius: 4px; /* Slightly rounded corners */
+      background-color: #5f5f5f; /* Primary button color */
+      color: #dadada; /* White text color */
+      font-size: 16px; /* Larger font size for the button */
+      cursor: pointer; /* Pointer cursor on hover */
+    }
+
+    input[name='delete'] {
+      background-color: #753131; /* Primary button color */
+      color: #dadada; /* White text color */
+    }
+    input[name='update'] {
+      background-color: #313a75; /* Primary button color */
+      color: #dadada; /* White text color */
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-content {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .small-view {
+    grid-template-columns: repeat(auto-fill, minmax(42.5vw, 1fr));
+    width: 100%;
+
+    .square-container {
+      max-width: 42.5vw;
+      margin: 0.5rem;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      background-color: #111111;
+      border: 3px solid #525252;
+      position: relative;
+      overflow: hidden;
+    }
+  }
+
+  .big-view {
+    width: 100%;
+    gap: 1rem;
+  }
+}
