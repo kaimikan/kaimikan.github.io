@@ -22,6 +22,58 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('theme', newTheme);
   });
 
+  // FORMAL & INFORMAL SETTING TOGGLE
+  const formalSVG = document.getElementById('formal');
+  const informalSVG = document.getElementById('informal');
+  let currentUrl = window.location.href.split('/');
+  currentUrl.pop();
+  let newUrl = currentUrl.join('/');
+
+  const settingToggleButton = document.getElementById('formal-informal-toggle');
+
+  const currentSetting = localStorage.getItem('setting') || 'formal';
+  document.documentElement.setAttribute('setting', currentSetting);
+
+  settingToggleButton.addEventListener('click', () => {
+    const newSetting =
+      document.documentElement.getAttribute('setting') === 'formal'
+        ? 'informal'
+        : 'formal';
+
+    document.documentElement.setAttribute('setting', newSetting);
+    // allow updating the link dynamically with the theme button
+    updateSetting(
+      newSetting,
+      formalSVG,
+      informalSVG,
+      newUrl,
+      (isSwitchingPage = true)
+    );
+    localStorage.setItem('setting', newSetting);
+  });
+
+  function updateSetting(
+    setting,
+    formalSVG,
+    informalSVG,
+    baseUrl,
+    isSwitchingPage
+  ) {
+    if (setting === 'formal') {
+      informalSVG.style.display = 'none';
+      formalSVG.style.display = 'block';
+      baseUrl += '/casual.html';
+    } else {
+      informalSVG.style.display = 'block';
+      formalSVG.style.display = 'none';
+      baseUrl += '/index.html';
+    }
+
+    if (isSwitchingPage) {
+      window.location.href = baseUrl;
+    }
+  }
+
   // NAV RESIZE BURGER MENU
   document.getElementById('burger-icon').addEventListener('click', function () {
     this.classList.toggle('open');
@@ -32,9 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeLink = document.getElementById('theme-link');
 
   function updateLinkHref(theme) {
-    if (theme === 'light') {
+    if (theme === 'light' && themeLink) {
       themeLink.setAttribute('href', 'assets/resume_light.pdf');
-    } else {
+    } else if (theme !== 'light' && themeLink) {
       themeLink.setAttribute('href', 'assets/resume.pdf');
     }
   }
@@ -46,6 +98,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const hasVerticalScrollbar =
       window.innerWidth > document.documentElement.clientWidth;
     document.body.style.paddingRight = hasVerticalScrollbar ? '0' : '17px'; // 17px is a common scrollbar width
+    console.log(window.innerWidth);
+    console.log(document.documentElement.clientWidth);
   }
 
   adjustPaddingForScrollbar();
