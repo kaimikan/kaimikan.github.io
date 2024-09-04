@@ -10,19 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
       console.log(itemId);
       const name = clickableDivs[i].getAttribute('name');
       const date = clickableDivs[i].getAttribute('date');
-      // Create a form element
-      const form = document.createElement('form');
-      form.setAttribute('method', 'post');
-      form.setAttribute(
-        'action',
-        `gallery-big-view.html?item-number=${itemId}&total-subitems=${subitemAmount}&item-name=${name}&item-date=${date}`
-      );
 
-      // Append form to body (or any other parent element)
-      document.body.appendChild(form);
-
-      // Submit the form
-      form.submit();
+      window.location.href = `gallery-big-view.html?item-number=${itemId}&total-subitems=${subitemAmount}&item-name=${name}&item-date=${date}`;
     });
   }
 });
