@@ -22,6 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('theme', newTheme);
   });
 
+  // CHANGE CV LINK ON THEME TOGGLE
+  const themeLink = document.getElementById('theme-link');
+
+  function updateLinkHref(theme) {
+    if (theme === 'light' && themeLink) {
+      themeLink.setAttribute('href', 'assets/resume_light.pdf');
+    } else if (theme !== 'light' && themeLink) {
+      themeLink.setAttribute('href', 'assets/resume.pdf');
+    }
+  }
+
+  updateLinkHref(currentTheme);
+
   // FORMAL & INFORMAL SETTING TOGGLE
   const formalSVG = document.getElementById('formal') || undefined;
   const informalSVG = document.getElementById('informal') || undefined;
@@ -84,19 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
     this.classList.toggle('open');
     document.getElementById('nav-menu').classList.toggle('open');
   });
-
-  // CHANGE CV LINK ON THEME TOGGLE
-  const themeLink = document.getElementById('theme-link');
-
-  function updateLinkHref(theme) {
-    if (theme === 'light' && themeLink) {
-      themeLink.setAttribute('href', 'assets/resume_light.pdf');
-    } else if (theme !== 'light' && themeLink) {
-      themeLink.setAttribute('href', 'assets/resume.pdf');
-    }
-  }
-
-  updateLinkHref(currentTheme);
 
   // DYNAMICALLY ADJUST BODY WIDTH WHEN SCROLLBAR POPS UP
   function adjustPaddingForScrollbar() {
