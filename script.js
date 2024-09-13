@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.setAttribute('data-theme', initialTheme);
 
   const toggleButton = document.getElementById('theme-toggle');
-  const currentTheme = localStorage.getItem('theme') || 'dark';
+  const currentTheme = initialTheme;
   document.documentElement.setAttribute('data-theme', currentTheme);
 
   toggleButton.addEventListener('click', () => {
@@ -103,8 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const hasVerticalScrollbar =
       window.innerWidth > document.documentElement.clientWidth;
     document.body.style.paddingRight = hasVerticalScrollbar ? '0' : '17px'; // 17px is a common scrollbar width
-    console.log(window.innerWidth);
-    console.log(document.documentElement.clientWidth);
   }
 
   adjustPaddingForScrollbar();

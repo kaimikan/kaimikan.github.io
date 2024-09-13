@@ -113,14 +113,17 @@ header {
   }
 }
 
-#formal-informal-toggle {
-  left: 1.5rem; /* Distance from the right of the viewport */
+.invisible {
   /* MAKING IT INVISIBLE FOR NOW */
-  border: none;
-  background: transparent;
-  color: transparent;
+  border: none !important;
+  background: transparent !important;
+  color: transparent !important;
   svg {
     fill: #ffffff00;
+  }
+
+  #formal-informal-toggle {
+    left: 1.5rem; /* Distance from the right of the viewport */
   }
 }
 
