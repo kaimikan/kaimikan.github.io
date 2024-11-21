@@ -105,25 +105,44 @@ header {
   }
 }
 
-#theme-toggle {
-  right: 1.5rem; /* Distance from the right of the viewport */
-
-  svg {
-    transform: rotate(var(--theme-icon-flip-degrees));
-  }
+#formal-informal-toggle {
+  left: 1.5rem; /* Distance from the right of the viewport */
 }
 
+/* SECTION FOR HIDING STUFF WHILE IT IS A WIP */
+/* ========================================== */
+#formal-informal-toggle {
+  border: none;
+  background: transparent;
+  color: transparent;
+  svg {
+    fill: #ffffff00;
+  }
+}
+/* ========================================== */
 .invisible {
-  /* MAKING IT INVISIBLE FOR NOW */
+  display: none;
   border: none !important;
   background: transparent !important;
   color: transparent !important;
   svg {
     fill: #ffffff00;
   }
+}
 
-  #formal-informal-toggle {
-    left: 1.5rem; /* Distance from the right of the viewport */
+#formal-informal-toggle:hover {
+  background-color: var(--button-hover-background-color);
+
+  svg {
+    fill: var(--link-color);
+  }
+}
+
+#theme-toggle {
+  right: 1.5rem; /* Distance from the right of the viewport */
+
+  svg {
+    transform: rotate(var(--theme-icon-flip-degrees));
   }
 }
 
