@@ -1,7 +1,8 @@
-@import url(fonts.css);
-
 :root {
   font-size: 16px;
+  /* Keep space reserved for the scrollbar so the layout doesn't shift
+     between short and long pages */
+  scrollbar-gutter: stable;
   --small-font-size: 1rem;
   --medium-font-size: 1.5rem;
   --big-font-size: 2rem;
@@ -47,33 +48,8 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
-  transition: color 0.25s ease-in;
-  transition: background-color 0.25s ease-in;
+  transition: color 0.25s ease-in, background-color 0.25s ease-in;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* Disable transition for width  */
-  transition: width 0s;
-  -webkit-user-select: none; /* Chrome, Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
-}
-
-.fade-exit {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-.fade-exit-active {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-/* Fade In Effect */
-.fade-enter {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-.fade-enter-active {
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
 }

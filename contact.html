@@ -3,9 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact</title>
+    <title>Contact &mdash; Kaloyan Krastev</title>
     <link rel="icon" href="assets/images/thumbnail.png" type="image/png" />
-    <link rel="preload" href="assets/styles/critical-styles.css" as="style" />
+    <script>
+      // Set the theme before the first paint to avoid a flash of the wrong theme
+      document.documentElement.setAttribute(
+        'data-theme',
+        localStorage.getItem('theme') ||
+          (matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light')
+      );
+    </script>
+    <link rel="stylesheet" href="assets/styles/fonts.css" />
+    <link rel="stylesheet" href="assets/styles/critical_styles.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
     <script src="script.js" defer></script>
   </head>
@@ -16,16 +27,26 @@
           <a href="index.html">Kaloyan Krastev</a>
         </span>
         <nav class="burger-menu">
-          <div class="burger-icon" id="burger-icon">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
+          <button
+            class="burger-icon"
+            id="burger-icon"
+            aria-label="Menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </button>
           <div class="nav-menu" id="nav-menu">
             <a href="about.html">About</a>
             <a href="projects.html">Projects</a>
-            <a class="current-page">Contacts</a>
-            <a href="assets/resume.pdf" target="_blank" id="theme-link"
+            <a class="current-page" aria-current="page">Contact</a>
+            <a
+              href="assets/resume.pdf"
+              target="_blank"
+              rel="noopener"
+              id="theme-link"
               >Resume/CV</a
             >
           </div>
@@ -34,7 +55,7 @@
     </header>
 
     <div id="content">
-      <span id="contact-title">Get In Touch</span>
+      <h1 id="contact-title">Get In Touch</h1>
       <div id="contact-text">
         <span>
           Have an idea you want to bring to life or just want to reach out?<br />
@@ -45,13 +66,13 @@
       Or if you just want my plain email: <i>kaimikan@protonmail.com</i>
     </div>
 
-    <button id="theme-toggle" class="invisible">
+    <button id="theme-toggle" aria-label="Toggle color theme">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="20"
         viewBox="0 0 24 24"
-        initially-hidden="true"
+        aria-hidden="true"
       >
         <path
           d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm2 0c0-5.514 4.486-10 10-10v20c-5.514 0-10-4.486-10-10z"
@@ -60,7 +81,7 @@
     </button>
 
     <footer>
-      <p>&copy; 2024 &middot; kaimikan</p>
+      <p>&copy; 2026 &middot; kaimikan</p>
     </footer>
   </body>
 </html>

@@ -3,9 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects</title>
+    <title>Projects &mdash; Kaloyan Krastev</title>
     <link rel="icon" href="assets/images/thumbnail.png" type="image/png" />
-    <link rel="preload" href="assets/styles/critical-styles.css" as="style" />
+    <script>
+      // Set the theme before the first paint to avoid a flash of the wrong theme
+      document.documentElement.setAttribute(
+        'data-theme',
+        localStorage.getItem('theme') ||
+          (matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light')
+      );
+    </script>
+    <link rel="stylesheet" href="assets/styles/fonts.css" />
+    <link rel="stylesheet" href="assets/styles/critical_styles.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
     <script src="script.js" defer></script>
   </head>
@@ -16,16 +27,26 @@
           <a href="index.html">Kaloyan Krastev</a>
         </span>
         <nav class="burger-menu">
-          <div class="burger-icon" id="burger-icon">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
+          <button
+            class="burger-icon"
+            id="burger-icon"
+            aria-label="Menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </button>
           <div class="nav-menu" id="nav-menu">
             <a href="about.html">About</a>
-            <a class="current-page">Projects</a>
-            <a href="contact.html">Contacts</a>
-            <a href="assets/resume.pdf" target="_blank" id="theme-link"
+            <a class="current-page" aria-current="page">Projects</a>
+            <a href="contact.html">Contact</a>
+            <a
+              href="assets/resume.pdf"
+              target="_blank"
+              rel="noopener"
+              id="theme-link"
               >Resume/CV</a
             >
           </div>
@@ -36,66 +57,65 @@
     <div id="section-wrapper">
       <div id="section-container">
         <div id="section-title-container">
-          <div class="subsection">
-            <span id="section-title">Projects</span>
-            <span class="subsection-text">
-              Here are some of the more notable projects that I've
-              done/participated in that have not been lost to time, they are in
-              descending chronological order.
+          <h1 id="section-title">Projects</h1>
+          <span class="subsection-text">
+            Here are some of the more notable projects that I've
+            done/participated in that have not been lost to time, they are in
+            descending chronological order.
+          </span>
+        </div>
+
+        <div class="subsection">
+          <div class="subsection-text">
+            <h2>GitHub Solo Projects</h2>
+            <span
+              ><a
+                class="inline-link"
+                href="https://github.com/kaimikan"
+                target="_blank"
+                rel="noopener"
+                >Here</a
+              >
+              you can browse through some of my recent open source projects.
             </span>
           </div>
+        </div>
 
-          <div class="subsection">
-            <div class="subsection-text">
-              <h2>GitHub Solo Projects</h2>
-              <span
-                ><a
-                  class="inline-link"
-                  href="https://github.com/kaimikan"
-                  target="_blank"
-                  >Here</a
-                >
-                you can browse through some of my recent open source projects.
-              </span>
-            </div>
-            <div class="subsection-link"></div>
-          </div>
-
-          <div class="subsection">
-            <div class="subsection-text">
-              <h2>Company Issue & Suggestion System - Voice of Employees</h2>
-              <span
-                >A software to vastly improve the communication and tracking of
-                the connected issues and possible improvement inside a company.
-                The core idea of the project is to allow easy communication
-                between the different employees of a company which is often made
-                difficult due to pen and paper solutions or interpersonal
-                communication problems. Voice of Employees won the Lean
-                Institute Bulgaria's 2023
-                <a
-                  class="inline-link"
-                  href="assets/images/lean_insitute_award_2023.jpeg"
-                  target="_blank"
-                  >Operational Excellence Award for Employee Engagement</a
-                >. Here is a
-                <a
-                  class="inline-link"
-                  href="assets/images/accepting_reward_lean_instutute_bulgaria.jpg"
-                  target="_blank"
-                  >photo of me</a
-                >
-                accepting our reward and giving a speech.</span
-              >
-            </div>
-            <div class="subsection-link">
+        <div class="subsection">
+          <div class="subsection-text">
+            <h2>Company Issue & Suggestion System - Voice of Employees</h2>
+            <span
+              >A software to vastly improve the communication and tracking of
+              the connected issues and possible improvement inside a company.
+              The core idea of the project is to allow easy communication
+              between the different employees of a company which is often made
+              difficult due to pen and paper solutions or interpersonal
+              communication problems. Voice of Employees won the Lean
+              Institute Bulgaria's 2023
               <a
-                href="https://docs.google.com/file/d/13odpTEpwqpChr8oCZ8kG2HWLCahaJIiX/preview"
+                class="inline-link"
+                href="assets/images/lean_insitute_award_2023.jpeg"
                 target="_blank"
-                >Trailer</a
+                >Operational Excellence Award for Employee Engagement</a
+              >. Here is a
+              <a
+                class="inline-link"
+                href="assets/images/accepting_reward_lean_instutute_bulgaria.jpg"
+                target="_blank"
+                >photo of me</a
               >
-              /
-              <a href="assets/voe.pdf" target="_blank">Presentation</a>
-            </div>
+              accepting our reward and giving a speech.</span
+            >
+          </div>
+          <div class="subsection-link">
+            <a
+              href="https://docs.google.com/file/d/13odpTEpwqpChr8oCZ8kG2HWLCahaJIiX/preview"
+              target="_blank"
+              rel="noopener"
+              >Trailer</a
+            >
+            /
+            <a href="assets/voe.pdf" target="_blank">Presentation</a>
           </div>
         </div>
 
@@ -150,13 +170,13 @@
       </div>
     </div>
 
-    <button id="theme-toggle" class="invisible">
+    <button id="theme-toggle" aria-label="Toggle color theme">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="20"
         viewBox="0 0 24 24"
-        initially-hidden="true"
+        aria-hidden="true"
       >
         <path
           d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm2 0c0-5.514 4.486-10 10-10v20c-5.514 0-10-4.486-10-10z"
@@ -165,7 +185,7 @@
     </button>
 
     <footer>
-      <p>&copy; 2024 &middot; kaimikan</p>
+      <p>&copy; 2026 &middot; kaimikan</p>
     </footer>
   </body>
 </html>

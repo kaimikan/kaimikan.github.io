@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kaloyan Krastev</title>
     <link rel="icon" href="assets/images/thumbnail.png" type="image/png" />
-    <link rel="preload" href="assets/styles/critical-styles.css" as="style" />
+    <script>
+      // Set the theme before the first paint to avoid a flash of the wrong theme
+      document.documentElement.setAttribute(
+        'data-theme',
+        localStorage.getItem('theme') ||
+          (matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light')
+      );
+    </script>
+    <link rel="stylesheet" href="assets/styles/fonts.css" />
+    <link rel="stylesheet" href="assets/styles/critical_styles.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
     <script src="script.js" defer></script>
   </head>
@@ -13,19 +24,29 @@
     <header>
       <div id="header-container">
         <span id="title">
-          <a class="current-page">Kaloyan Krastev</a>
+          <a class="current-page" aria-current="page">Kaloyan Krastev</a>
         </span>
         <nav class="burger-menu">
-          <div class="burger-icon" id="burger-icon">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
+          <button
+            class="burger-icon"
+            id="burger-icon"
+            aria-label="Menu"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </button>
           <div class="nav-menu" id="nav-menu">
             <a href="about.html">About</a>
             <a href="projects.html">Projects</a>
-            <a href="contact.html">Contacts</a>
-            <a href="assets/resume.pdf" target="_blank" id="theme-link"
+            <a href="contact.html">Contact</a>
+            <a
+              href="assets/resume.pdf"
+              target="_blank"
+              rel="noopener"
+              id="theme-link"
               >Resume/CV</a
             >
           </div>
@@ -34,8 +55,12 @@
     </header>
 
     <div id="content">
-      <img src="assets/images/selfie01-denoised.png" id="me" alt="face" />
-      <span id="name">Kaloyan Krastev</span>
+      <img
+        src="assets/images/selfie01-denoised.png"
+        id="me"
+        alt="Portrait of Kaloyan Krastev"
+      />
+      <h1 id="name">Kaloyan Krastev</h1>
       <span class="activity">Web Development</span>
       <span class="activity">Design Prototyping</span>
       <span class="activity">Database Architecture</span>
@@ -44,13 +69,16 @@
         <a
           href="https://www.github.com/kaimikan"
           target="_blank"
+          rel="noopener"
           class="social-button"
+          aria-label="GitHub"
         >
           <svg
             width="35.48"
             height="35"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 98 96"
+            aria-hidden="true"
           >
             <path
               fill-rule="evenodd"
@@ -63,13 +91,16 @@
         <a
           href="https://www.linkedin.com/in/kaloyan-krastev-5888b8325/"
           target="_blank"
+          rel="noopener"
           class="social-button"
+          aria-label="LinkedIn"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="33"
             height="33"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"
@@ -79,13 +110,13 @@
       </div>
     </div>
 
-    <button id="theme-toggle" class="invisible">
+    <button id="theme-toggle" aria-label="Toggle color theme">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="20"
         viewBox="0 0 24 24"
-        initially-hidden="true"
+        aria-hidden="true"
       >
         <path
           d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm2 0c0-5.514 4.486-10 10-10v20c-5.514 0-10-4.486-10-10z"
@@ -93,38 +124,8 @@
       </svg>
     </button>
 
-    <button id="formal-informal-toggle" class="invisible">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="25px"
-        height="25px"
-        viewBox="0 0 24 24"
-        id="formal"
-        initially-hidden="true"
-      >
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M12.052 1.25H11.948C11.0495 1.24997 10.3003 1.24995 9.70552 1.32991C9.07773 1.41432 8.51093 1.59999 8.05546 2.05546C7.59999 2.51093 7.41432 3.07773 7.32991 3.70552C7.24995 4.3003 7.24997 5.04951 7.25 5.94799V6.02572C5.22882 6.09185 4.01511 6.32803 3.17157 7.17157C2 8.34315 2 10.2288 2 14C2 17.7712 2 19.6569 3.17157 20.8284C4.34315 22 6.22876 22 10 22H14C17.7712 22 19.6569 22 20.8284 20.8284C22 19.6569 22 17.7712 22 14C22 10.2288 22 8.34315 20.8284 7.17157C19.9849 6.32803 18.7712 6.09185 16.75 6.02572V5.94801C16.75 5.04954 16.7501 4.3003 16.6701 3.70552C16.5857 3.07773 16.4 2.51093 15.9445 2.05546C15.4891 1.59999 14.9223 1.41432 14.2945 1.32991C13.6997 1.24995 12.9505 1.24997 12.052 1.25ZM15.25 6.00189V6C15.25 5.03599 15.2484 4.38843 15.1835 3.9054C15.1214 3.44393 15.0142 3.24644 14.8839 3.11612C14.7536 2.9858 14.5561 2.87858 14.0946 2.81654C13.6116 2.7516 12.964 2.75 12 2.75C11.036 2.75 10.3884 2.7516 9.90539 2.81654C9.44393 2.87858 9.24644 2.9858 9.11612 3.11612C8.9858 3.24644 8.87858 3.44393 8.81654 3.9054C8.7516 4.38843 8.75 5.03599 8.75 6V6.00189C9.14203 6 9.55807 6 10 6H14C14.4419 6 14.858 6 15.25 6.00189ZM17 9C17 9.55229 16.5523 10 16 10C15.4477 10 15 9.55229 15 9C15 8.44772 15.4477 8 16 8C16.5523 8 17 8.44772 17 9ZM8 10C8.55228 10 9 9.55229 9 9C9 8.44772 8.55228 8 8 8C7.44772 8 7 8.44772 7 9C7 9.55229 7.44772 10 8 10Z"
-        />
-      </svg>
-
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="25"
-        height="25"
-        viewBox="0 -32 640 640"
-        id="informal"
-        initially-hidden="true"
-      >
-        <path
-          d="M631.2 96.5L436.5 0C416.4 27.8 371.9 47.2 320 47.2S223.6 27.8 203.5 0L8.8 96.5c-7.9 4-11.1 13.6-7.2 21.5l57.2 114.5c4 7.9 13.6 11.1 21.5 7.2l56.6-27.7c10.6-5.2 23 2.5 23 14.4V480c0 17.7 14.3 32 32 32h256c17.7 0 32-14.3 32-32V226.3c0-11.8 12.4-19.6 23-14.4l56.6 27.7c7.9 4 17.5.8 21.5-7.2L638.3 118c4-7.9.8-17.6-7.1-21.5z"
-        />
-      </svg>
-    </button>
-
     <footer>
-      <p>&copy; 2024 &middot; kaimikan</p>
+      <p>&copy; 2026 &middot; kaimikan</p>
     </footer>
   </body>
 </html>
