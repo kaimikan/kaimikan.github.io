@@ -5,6 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentTheme = document.documentElement.getAttribute('data-theme');
 
   const toggleButton = document.getElementById('theme-toggle');
+  const toggleOpts = toggleButton.querySelectorAll('.opt');
+
+  function updateToggleState(theme) {
+    toggleOpts.forEach((o) =>
+      o.classList.toggle('active', o.dataset.t === theme)
+    );
+  }
+
+  updateToggleState(currentTheme);
+
   toggleButton.addEventListener('click', () => {
     const newTheme =
       document.documentElement.getAttribute('data-theme') === 'light'
@@ -12,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         : 'light';
     document.documentElement.setAttribute('data-theme', newTheme);
     updateLinkHref(newTheme);
+    updateToggleState(newTheme);
     localStorage.setItem('theme', newTheme);
   });
 
