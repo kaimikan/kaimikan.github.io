@@ -21,7 +21,8 @@
       content="https://kaimikan.github.io/assets/images/selfie01-denoised.png"
     />
     <meta name="twitter:card" content="summary" />
-    <link rel="icon" href="assets/images/thumbnail.png" type="image/png" />
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+    <link rel="icon" type="image/png" href="assets/images/thumbnail.png" />
     <script>
       // Set the theme before the first paint to avoid a flash of the wrong theme
       document.documentElement.setAttribute(
@@ -32,7 +33,6 @@
             : 'light')
       );
     </script>
-    <link rel="stylesheet" href="assets/styles/fonts.css" />
     <link rel="stylesheet" href="assets/styles/critical_styles.css" />
     <link rel="stylesheet" href="assets/styles/style.css" />
     <script src="script.js" defer></script>
@@ -80,22 +80,10 @@
         </span>
       </div>
       <a class="btn" href="mailto:kaimikan@protonmail.com">CONTACT ME</a>
-      Or if you just want my plain email: <i>kaimikan@protonmail.com</i>
+      <span id="contact-email">kaimikan@protonmail.com</span>
     </div>
 
-    <button id="theme-toggle" aria-label="Toggle color theme">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path
-          d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm2 0c0-5.514 4.486-10 10-10v20c-5.514 0-10-4.486-10-10z"
-        />
-      </svg>
-    </button>
+    <button id="theme-toggle" aria-label="Toggle color theme">theme</button>
 
     <footer>
       <p>&copy; 2026 &middot; kaimikan</p>

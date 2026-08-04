@@ -35,4 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('nav-menu').classList.toggle('open', isOpen);
     burgerIcon.setAttribute('aria-expanded', isOpen);
   });
+
+  // STICKY HEADER HAIRLINE, shown only once content scrolls beneath it
+  const header = document.querySelector('header');
+  const updateHairline = () =>
+    header.classList.toggle('scrolled', window.scrollY > 0);
+  updateHairline();
+  window.addEventListener('scroll', updateHairline, { passive: true });
 });
